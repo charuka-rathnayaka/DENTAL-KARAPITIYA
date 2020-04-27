@@ -95,6 +95,7 @@
     if(isset($_POST['login'])){
         $username=$_POST["username"];
         $pass=$_POST["password"];
+       
      
         if (empty($username)){
             array_push($errors,"Please enter Username");
@@ -114,6 +115,14 @@
                 $_SESSION["username"]=$username;    
                 $_SESSION['success']="Now you are logged in"; 
                 header('location: index.php');
+                $row = mysqli_fetch_assoc($result);
+                $Firstname=$row["Firstname"];
+                $_SESSION["Firstname"]=$row["Firstname"];
+                $_SESSION["Lastname"]=$row["Lastname"];    
+                $_SESSION["Email"]=$row["Email"];    
+                $_SESSION["birthday"]=$row["Birthday"];    
+                $_SESSION["gender"]=$row["Gender"];  
+
             }
             else{
                 array_push($errors,"Username and Password are incorrect");
