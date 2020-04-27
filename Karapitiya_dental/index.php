@@ -22,7 +22,7 @@
                     <i class="fa fa-caret-down"></i>
                 </button>
             <div class="dropdown-content">
-                <a href="basic_treatments.php">Basiv Treatments</a>
+                <a href="basic_treatments.php">Basic Treatments</a>
                 <a href="advance_treatments.php">Advance Treatments</a>   
             </div>
             </div>
@@ -55,6 +55,7 @@
                 ?>
                 <div class="welcome">
                     <p>WELCOME <strong> <?php echo $_SESSION['username']; ?></strong>
+                    
                 </p>
                 <p> <a href='index.php?logout='1' ' style="color:red;">Logout</p>
                 </div>
@@ -67,6 +68,7 @@
                 <p> <a href='login.php' style="color:blue;">Login</p>
                 </div>
                 <?php endif ?>
+                
             </div>
 
     </body>
