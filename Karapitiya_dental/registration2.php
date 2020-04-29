@@ -1,4 +1,4 @@
-<?php include("config1.php");
+<?php include("config.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,7 @@
              ?>            
             <div class="input-group">
                 <label>Username</label>
-                <input type="text" name="username" value="<?php echo $Firstname ?>">
+                <input type="text" name="username" value="<?php  ?>">
             </div>
             <div class="input-group">
                 <label>Password</label>

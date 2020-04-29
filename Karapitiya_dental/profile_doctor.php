@@ -16,32 +16,20 @@ if (empty($_SESSION['username'])){
         </div>
         
         <div class="navbar">
-            <a href="index.php">Home</a>
-            
-            <div class="dropdown">
-                <button class="dropbtn">Treatments
-                    <i class="fa fa-caret-down"></i>
-                </button>
-            <div class="dropdown-content">
-                <a href="basic_treatments.php">Basic Treatments</a>
-                <a href="advance_treatments.php">Advance Treatments</a>   
-            </div>
-            </div>
+            <a href="index_doctor.php">Home</a>
             <div class="dropdown">
                 <button class="dropbtn">Appointments
                     <i class="fa fa-caret-down"></i>
                 </button>
             <div class="dropdown-content">
-                <a href="add_new_appointment.php">Make new Appointment</a>
-                <a href="view_my_appointment.php">View My Appointments</a>   
+                <a href="today_appointments.php">Today Appointments</a>
+                <a href="past_appointments.php">Past Appointments</a>   
             </div>
             </div>
-            <a href="my_profile.php">My Profile</a>
-            <a href="about_us.php">About</a>
-            <a href="contact_us.php">Contact</a>
+            <a href="profile_doctor.php">My Profile</a>
+            <a href="personal_blog.php">Blog</a>
             </div>
-
-            <div class="log">
+        <div class="content">
             <?php if(isset($_SESSION["success"])):?>
                 <div class="success">
                     <h3>
@@ -59,25 +47,27 @@ if (empty($_SESSION['username'])){
                     <p>WELCOME <strong> <?php echo $_SESSION['username']; ?></strong>
                     
                 </p>
-                
-                <p> <a href="index.php?logout='1' "style="color:red;">Logout</a></p>
+                <p> <a href='index.php?logout='1' ' style="color:red;">Logout</a></p>
                 </div>
-               
-    
                
                 <?php endif ?>
                 <?php 
                 if(!isset($_SESSION['username'])): ?>
                 <div class="welcome">
                     
-                <p> <a href='login.php'style="color:blue;">Login</a></p>
+                <p> <a href='login.php' style="color:blue;">Login</a></p>
                 </div>
                 <?php endif ?>
+                
             </div>
 
             <div class="content">
             <div class="topic"><h3>My Profile</h3></div>
             <br>
+            <div class="input-data">
+                <label>Registration Number</label>
+            
+                <label><?php echo $_SESSION["Reg_Num"]; ?></label>
             <div class="input-data">
                 <label>Firstname:</label>
             
@@ -105,10 +95,11 @@ if (empty($_SESSION['username'])){
                 
             </div>
             <div class="input-data">
-                <label>Dental History:</label>
-                
+                <label>Quallifications</label>
+                <label><?php echo $_SESSION["Qualifications"]; ?></label>
                 
             </div>
+            
             
             </div>
            
