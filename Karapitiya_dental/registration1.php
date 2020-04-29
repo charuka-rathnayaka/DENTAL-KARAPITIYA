@@ -1,4 +1,4 @@
-<?php include("config1.php");
+<?php include("config.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,25 +16,25 @@
              ?>            
             <div class="input-group">
                 <label>Firstname</label>
-                <input type="text" name="Firstname" value="<?php echo $Firstname ?>">
+                <input type="text" name="Firstname" value="<?php  ?>">
             </div>
             <div class="input-group">
                 <label>Lastname</label>
-                <input type="text" name="Lastname"value="<?php echo $Lastname ?>">
+                <input type="text" name="Lastname"value="<?php  ?>">
             </div>
             <div class="input-group">
                 <label>Email</label>
-                <input type="text" name="Email" value="<?php echo $Email ?>">
+                <input type="text" name="Email" value="<?php  ?>">
             </div>
             <div class="input-group">
                 <label>Birthday:</label>
-                <input type="date"  name="birthday">
+                <input type="date"  name="Birthday">
             </div>
             <br>
             <div class="input-data">
-                <input type="radio"  name="gender" value="male">
+                <input type="radio"  name="Gender" value="male">
                 <label >Male</label><br>
-                <input type="radio" name="gender" value="female">
+                <input type="radio" name="Gender" value="female">
                 <label >Female</label><br>
             </div>
             <br>
