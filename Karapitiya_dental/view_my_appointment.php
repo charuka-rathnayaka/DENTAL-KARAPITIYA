@@ -1,5 +1,7 @@
 <?php include('config1.php');
 include('database_server.php');
+$db_connect = new Db_Connection();
+$database = $db_connect->connect();
 if (empty($_SESSION['username'])) {
     header("location:login.php");
 } ?>

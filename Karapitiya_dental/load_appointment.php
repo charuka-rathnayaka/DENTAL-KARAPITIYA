@@ -1,5 +1,8 @@
 <?php
 include('database_server.php');
+$db_connect = new Db_Connection();
+$database = $db_connect->connect();
+$date = date("Y/m/d");
 $ss = "SELECT * FROM appointment WHERE `date`='$date'";
 $re = mysqli_query($database, $ss);
 $data = array();
