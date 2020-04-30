@@ -1,4 +1,5 @@
 <?php include('config.php'); 
+include('dr_profile.php'); 
 
 if (empty($_SESSION['username'])){
     header("location:login.php");
@@ -67,36 +68,36 @@ if (empty($_SESSION['username'])){
             <div class="input-data">
                 <label>Registration Number</label>
             
-                <label><?php echo $_SESSION["Reg_Num"]; ?></label>
+                <label><?php echo $Reg_Num; ?></label>
             <div class="input-data">
                 <label>Firstname:</label>
             
-                <label><?php echo $_SESSION["Firstname"]; ?></label>
+                <label><?php echo $Firstname; ?></label>
                 
             </div>
             <div class="input-data">
                 <label>Lastname:</label>
-                <label><?php echo $_SESSION["Lastname"]; ?></label>
+                <label><?php echo $Lastname; ?></label>
                 
             </div>
             <div class="input-data">
                 <label>Email:</label>
-                <label><?php echo $_SESSION["Email"]; ?></label>
+                <label><?php echo $Email; ?></label>
                 
             </div>
             <div class="input-data">
                 <label>Birthday:</label>
-                <label><?php echo $_SESSION["birthday"]; ?></label>
+                <label><?php echo $Birthday; ?></label>
                 
             </div>
             <div class="input-data">
                 <label>Gender:</label>
-                <label><?php echo $_SESSION["gender"]; ?></label>
+                <label><?php echo $Gender; ?></label>
                 
             </div>
             <div class="input-data">
                 <label>Quallifications</label>
-                <label><?php echo $_SESSION["Qualifications"]; ?></label>
+                <label><?php echo $Qualifications; ?></label>
                 
             </div>
             
