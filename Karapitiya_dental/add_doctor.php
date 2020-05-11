@@ -24,15 +24,15 @@ if ($_SESSION["username"]!="admin"){
             </div>      
             <div class="input-group">
                 <label>Firstname</label>
-                <input type="text" name="Firstname" value="<?php echo $Firstname ?>">
+                <input type="text" name="Firstname" value="<?php ?>">
             </div>
             <div class="input-group">
                 <label>Lastname</label>
-                <input type="text" name="Lastname"value="<?php echo $Lastname ?>">
+                <input type="text" name="Lastname"value="<?php  ?>">
             </div>
             <div class="input-group">
                 <label>Email</label>
-                <input type="text" name="Email" value="<?php echo $Email ?>">
+                <input type="text" name="Email" value="<?php  ?>">
             </div>
             <div class="input-group">
                 <label>Birthday:</label>
@@ -47,11 +47,11 @@ if ($_SESSION["username"]!="admin"){
             </div>
             <div class="input-group">
                 <label>Qualifications</label>
-                <input type="text" name="Qualifications" value="<?php echo $Email ?>">
+                <input type="text" name="Qualifications" value="<?php  ?>">
             </div>
             <div class="input-group">
                 <label>Username</label>
-                <input type="text" name="username" value="<?php echo $Firstname ?>">
+                <input type="text" name="username" value="<?php  ?>">
             </div>
             <div class="input-group">
                 <label>Password</label>

@@ -1,5 +1,6 @@
 <?php
 include_once("database_server.php");
+include_once("users.php");
 class Manage_user{
    
     public $database;
@@ -15,14 +16,15 @@ function login_user($username,$pass){
             $sql_query7="SELECT * FROM `staff_accounts` WHERE `Username`='$username' AND `password`='$password'";
             $result_staff=mysqli_query($this->database,$sql_query7);
             if((mysqli_num_rows($result_staff)>0) && ($username=="admin")){
-                $_SESSION["username"]=$username;
-                $user_type="admin";
-                return $user_type;
+                $row = $result_staff->fetch_assoc();
+                $admin=new Admin($username,$row["Password"]);
+                return $admin;
+                
             }
             elseif((mysqli_num_rows($result_staff)>0) && ($username=="staff")){
-                $_SESSION["username"]=$username;
-                $user_type="staff";
-                return $user_type;
+                $row = $result_staff->fetch_assoc();
+                $staff=new Staff($username,$row["Password"]);
+                return $staff;
             }
             else{
            
@@ -31,35 +33,50 @@ function login_user($username,$pass){
             $sql_query2="SELECT * FROM `patient_accounts` WHERE `Username`='$username' AND `password`='$password'";
             $result_patient=mysqli_query($this->database,$sql_query2);
             if(mysqli_num_rows($result_doctor)>0){
-                $_SESSION["username"]=$username;    
-                $_SESSION['success']="WELCOME DOCTOR"; 
-                $user_type="doctor";
-                return $user_type;
+                $row = $result_doctor->fetch_assoc();
+                $doctor=new Doctor($row["Reg_Num"],$row["Firstname"],$row["Lastname"],$row["Email"],$row["Birthday"],$row["Gender"],$row["Qualifications"],$username,$password);
+                return $doctor;
             }
             else if(mysqli_num_rows($result_patient)>0){
-                $_SESSION["username"]=$username;    
-                $_SESSION['success']="Now you are logged in Patient"; 
-                $user_type="patient";
-                return $user_type;
+                $row = $result_patient->fetch_assoc();
+                $patient=new Patient($row["Firstname"],$row["Lastname"],$row["Email"],$row["Birthday"],$row["Gender"],$username,$password);
+
+                return $patient;
                
             }       
         
     }
 }
-function register_patient($Reg_Num,$Firstname,$Lastname,$Email,$Birthday,$Gender,$Username,$pass){
+function register_patient($Firstname,$Lastname,$Email,$Birthday,$Gender,$Username,$pass){
     $password=md5($pass);
     $sql_query1="INSERT INTO `patient_accounts` ( `Firstname`, `Lastname`, `Email`, `Birthday`, `Gender`, `Username`, `Password`) VALUES ('$Firstname', '$Lastname', '$Email', '$Birthday', '$Gender', '$Username','$password')";
     mysqli_query($this->database,$sql_query1);
-    $_SESSION["username"]=$Username;    
-    $_SESSION['success']="Now you are logged in"; 
-    $user_type="patient";
-    return $user_type;
+    $patient=new Patient($Firstname,$Lastname,$Email,$Birthday,$Gender,$Username,$password);
+    return $patient;
 
 }
 function register_doctor($Reg_Num,$Firstname,$Lastname,$Email,$Birthday,$Gender,$Qualifications,$Username,$password){
     $sql_query1="INSERT INTO `doctor_accounts` ( `Reg_Num`,`Firstname`, `Lastname`, `Email`, `Gender`, `Birthday`, `Qualifications`, `Username`, `Password`) VALUES ('$Reg_Num','$Firstname', '$Lastname', '$Email', '$Gender', '$Birthday','$Qualifications', '$Username','$password')";
-    mysqli_query($this->database,$sql_query1);   
+    mysqli_query($this->database,$sql_query1); 
+    $doctor=new Doctor($Reg_Num,$Firstname,$Lastname,$Email,$Birthday,$Gender,$Qualifications,$Username,$password);  
+
     //$_SESSION['success']="Now doc added"; 
+}
+function check_patient_username($username){
+    $sql_query0="SELECT * FROM `patient_accounts` WHERE `Username`='$username'";
+    $checkusername=mysqli_query($this->database,$sql_query0);
+    if(mysqli_num_rows($checkusername)>0){
+        array_push($errors,"That Username already exists");
+    
+    }
+}
+function check_doctor_username($username){
+    $sql_query6="SELECT * FROM `doctor_accounts` WHERE `Username`='$username'";
+    $checkusername=mysqli_query($this->database,$sql_query6);
+    if(mysqli_num_rows($checkusername)>0){
+        array_push($errors,"That Username already exists");
+    
+    }
 }
 }
 
