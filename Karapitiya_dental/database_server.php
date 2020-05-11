@@ -10,7 +10,7 @@ class Db_Connection{
     public $servername = "localhost";
     public $usrname = "root";
     public $pswrd = "";
-    public $dbname = "dental_karapitiya";
+    public $dbname = "dentalkarapitiya";
 
     function connect(){
         try{
