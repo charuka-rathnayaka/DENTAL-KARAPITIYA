@@ -1,14 +1,12 @@
 <?php
-include('database_server.php');
-$db_connect = new Db_Connection();
-$database = $db_connect->connect();
+$database = mysqli_connect('localhost', 'root', '', 'den');
 $date = date("Y/m/d");
-$ss = "SELECT * FROM appointment WHERE `date`='$date'";
+$ss = "SELECT * FROM booking WHERE `date`='$date'";
 $re = mysqli_query($database, $ss);
 $data = array();
 if (mysqli_num_rows($re) > 0) {
     while ($row = mysqli_fetch_assoc($re)) {
-        array_push($data, $row['number']);
+        array_push($data, $row['Appointmentnumber']);
     }
     echo min($data);
 }
