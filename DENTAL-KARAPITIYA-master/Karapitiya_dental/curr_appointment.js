@@ -9,14 +9,14 @@ function clock() {
   var h = new Date().getHours();
   var day = new Date().getDay();
   if (0 < day && day < 6) {
-    if (3 <= h && h <= 17) {
+    if (8 <= h && h <= 17) {
       setInterval(getting(), 1000);
       status.innerHTML = "Next Appointment Number";
     } else {
-      status.innerHTML = "Clinic is clos";
+      status.innerHTML = "Clinic is close";
     }
   } else {
-    status.innerHTML = "Clinic is cose";
+    status.innerHTML = "Clinic is close";
   }
 }
 
