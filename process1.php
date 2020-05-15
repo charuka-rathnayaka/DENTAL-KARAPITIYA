@@ -9,7 +9,8 @@ if(isset($_POST['subs'])){
 	$select=$_POST['choice'];
 	$date=$_POST['date'];
 	$time=$_POST['time'];
-	$query="insert into booking(id,category,date,time) values('$id','$select','$date','$time')";
+	$number=$_POST['number'];
+	$query="insert into booking(Appointmentnumber,username,category,date,time) values('$number','$id','$select','$date','$time')";
 	mysqli_query($connection,$query);
 	mysqli_close($connection);
 }
