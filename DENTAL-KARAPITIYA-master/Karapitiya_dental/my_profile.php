@@ -1,5 +1,5 @@
 <?php include('config.php'); 
-include('patient_profile.php');
+//include('patient_profile.php');
 if (empty($_SESSION['username'])){
     header("location:login.php");
 }?>
@@ -87,30 +87,38 @@ if (empty($_SESSION['username'])){
             <div class="content">
             <div class="topic"><h3>My Profile</h3></div>
             <br>
+
+            <div class="input-data">
+                <label>Username :</label>
+            
+                <label id="Username"></label>
+                
+            </div>
+
             <div class="input-data">
                 <label>Firstname:</label>
             
-                <label><?php echo $Firstname; ?></label>
+                <label id="Firstname"></label>
                 
             </div>
             <div class="input-data">
                 <label>Lastname:</label>
-                <label><?php echo $Lastname; ?></label>
+                <label id="Lastname"></label>
                 
             </div>
             <div class="input-data">
                 <label>Email:</label>
-                <label><?php echo $Email; ?></label>
+                <label id="Email"></label>
                 
             </div>
             <div class="input-data">
                 <label>Birthday:</label>
-                <label><?php echo $Birthday; ?></label>
+                <label id="Birthday"></label>
                 
             </div>
             <div class="input-data">
                 <label>Gender:</label>
-                <label><?php echo $Gender; ?></label>
+                <label id="Gender"></label>
                 
             </div>
             <div class="input-data">
@@ -120,6 +128,25 @@ if (empty($_SESSION['username'])){
             </div>
             
             </div>
+            <script> 
+   
+var xmlhttp = new XMLHttpRequest(); 
+   
+xmlhttp.onreadystatechange = function() { 
+    if (this.readyState == 4 && this.status == 200) { 
+        myObj = JSON.parse(this.responseText); 
+        document.getElementById("Firstname").innerHTML = myObj.Firstname; 
+        document.getElementById("Lastname").innerHTML = myObj.Lastname; 
+        document.getElementById("Email").innerHTML = myObj.Email; 
+        document.getElementById("Birthday").innerHTML = myObj.Birthday; 
+        document.getElementById("Gender").innerHTML = myObj.Gender; 
+        document.getElementById("Username").innerHTML = myObj.Username; 
+    } 
+}; 
+xmlhttp.open("GET", "patient_profile.php", true); 
+xmlhttp.send(); 
+   
+</script> 
            
     </body>
 </html>

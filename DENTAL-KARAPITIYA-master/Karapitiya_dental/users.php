@@ -1,5 +1,5 @@
 <?php
-class Patient{
+class Patient implements JsonSerializable{
     protected string $Firstname;
     protected $Lastname;
     protected $Email;
@@ -20,6 +20,33 @@ class Patient{
     function get_username(){
         return $this->Username;
     }
+    function get_Firstname(){
+        return $this->Firstname;
+    }
+    function get_Lastname(){
+        return $this->Lastname;
+    }
+    function get_Email(){
+        return $this->Email;
+    }
+    function get_Birthday(){
+        return $this->Birthday;
+    }
+    function get_Gender(){
+        return $this->Gender;
+    }
+    public function jsonSerialize()
+    {
+        return 
+        [
+            'Firstname'   => $this->get_Firstname(),
+            'Lastname' => $this->get_Lastname(),
+            'Email'   => $this->get_Email(),
+            'Birthday'   => $this->get_Birthday(),
+            'Gender'   => $this->get_Gender(),
+            'Username'   => $this->get_username()
+        ];
+    }
 
 }
 
@@ -35,7 +62,7 @@ class Dental_Staff{
     }
 }
 
-class Doctor extends Dental_staff{
+class Doctor extends Dental_staff implements JsonSerializable{
     protected String $Reg_num;
     protected string $Firstname;
     protected string $Lastname;
@@ -57,6 +84,41 @@ class Doctor extends Dental_staff{
     }
     function get_username(){
         return $this->Username;
+    }
+    function get_Firstname(){
+        return $this->Firstname;
+    }
+    function get_Lastname(){
+        return $this->Lastname;
+    }
+    function get_Email(){
+        return $this->Email;
+    }
+    function get_Birthday(){
+        return $this->Birthday;
+    }
+    function get_Gender(){
+        return $this->Gender;
+    }
+    function get_Reg_num(){
+        return $this->Reg_num;
+    }
+    function get_Qualifications(){
+        return $this->Qualifications;
+    }
+    public function jsonSerialize()
+    {
+        return 
+        [
+            'Reg_num'   => $this->get_Reg_num(),
+            'Firstname'   => $this->get_Firstname(),
+            'Lastname' => $this->get_Lastname(),
+            'Email'   => $this->get_Email(),
+            'Birthday'   => $this->get_Birthday(),
+            'Gender'   => $this->get_Gender(),
+            'Username'   => $this->get_username(),
+            'Qualifications'   => $this->get_Qualifications()
+        ];
     }
 
 }

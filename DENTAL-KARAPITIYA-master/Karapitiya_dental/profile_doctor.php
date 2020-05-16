@@ -1,5 +1,5 @@
 <?php include('config.php'); 
-include('dr_profile.php'); 
+ 
 
 if (empty($_SESSION['username']) || ($_SESSION['user_type']!="Doctor")){
     header("location:login.php");
@@ -50,7 +50,7 @@ if (empty($_SESSION['username']) || ($_SESSION['user_type']!="Doctor")){
             
            <?php include('user_type_menu.php');
            ?> 
-        <div class="content">
+        <div class="log">
             <?php if(isset($_SESSION["success"])):?>
                 <div class="success">
                     <h3>
@@ -86,43 +86,70 @@ if (empty($_SESSION['username']) || ($_SESSION['user_type']!="Doctor")){
             <div class="topic"><h3>My Profile</h3></div>
             <br>
             <div class="input-data">
-                <label>Registration Number</label>
+                <label>Username:</label>
             
-                <label><?php echo $Reg_Num; ?></label>
+                <label id="Username"></label>
+                
+            </div>
+            <div class="input-data">
+                <label>Registration Number:</label>
+            
+                <label id="Reg_num"></label>
             <div class="input-data">
                 <label>Firstname:</label>
             
-                <label><?php echo $Firstname; ?></label>
+                <label id='Firstname'></label>
                 
             </div>
             <div class="input-data">
                 <label>Lastname:</label>
-                <label><?php echo $Lastname; ?></label>
+                <label id="Lastname"></label>
                 
             </div>
             <div class="input-data">
                 <label>Email:</label>
-                <label><?php echo $Email; ?></label>
+                <label id="Email"></label>
                 
             </div>
             <div class="input-data">
                 <label>Birthday:</label>
-                <label><?php echo $Birthday; ?></label>
+                <label id="Birthday"></label>
                 
             </div>
             <div class="input-data">
                 <label>Gender:</label>
-                <label><?php echo $Gender; ?></label>
+                <label id='Gender'></label>
                 
             </div>
             <div class="input-data">
-                <label>Quallifications</label>
-                <label><?php echo $Qualifications; ?></label>
+                <label>Quallifications:</label>
+                <label id='Qualifications'>></label>
                 
             </div>
             
             
             </div>
+            <script>
+
+            var xmlhttp = new XMLHttpRequest(); 
+   
+xmlhttp.onreadystatechange = function() { 
+    if (this.readyState == 4 && this.status == 200) { 
+        myObj = JSON.parse(this.responseText); 
+        document.getElementById("Firstname").innerHTML = myObj.Firstname; 
+        document.getElementById("Lastname").innerHTML = myObj.Lastname; 
+        document.getElementById("Email").innerHTML = myObj.Email; 
+        document.getElementById("Birthday").innerHTML = myObj.Birthday; 
+        document.getElementById("Gender").innerHTML = myObj.Gender; 
+        document.getElementById("Username").innerHTML = myObj.Username; 
+        document.getElementById("Reg_num").innerHTML = myObj.Reg_num;
+        document.getElementById("Qualifications").innerHTML = myObj.Qualifications;
+    } 
+}; 
+xmlhttp.open("GET", "dr_profile.php", true); 
+xmlhttp.send(); 
+   
+</script> 
            
     </body>
 </html>
