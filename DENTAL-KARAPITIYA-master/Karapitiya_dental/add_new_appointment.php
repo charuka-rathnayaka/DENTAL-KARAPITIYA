@@ -16,18 +16,19 @@ if (empty($_SESSION['user_type'])){
         <style>
         .bottom{
 	        background:white;
-	        height:100px;
+	        height:150px;
 	        width:500px;
 	        position:absolute;
 	        left:500px;
+			top:450px;
         }
 		.aaa{
 			background:white;
 			height:100px;
-			width:200px;
+			width:300px;
 			position:absolute;
 			left:650px;
-			top:550px;
+			top:605px;
 		}
         </style>
     </head>
